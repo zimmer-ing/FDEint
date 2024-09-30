@@ -17,9 +17,7 @@
 
 import torch
 from tqdm import tqdm
-import math
 import warnings
-import inspect
 import torch.nn as nn
 
 DEBUG = False
@@ -171,83 +169,3 @@ def get_outputs(y_internal, t_internal, t):
     return y0 + (y1 - y0) * (t - t0) / (t1 - t0)
 
 
-if __name__ == "__main__":
-    # Define the fractional differential equation as a simple function (dy/dt = -y)
-    def fractional_diff_eq(t, x):
-        return -x
-
-
-    from mittag_leffler import ml as mittag_leffler
-    import matplotlib.pyplot as plt
-    import time
-    import numpy as np
-
-    # Define the data types we want to test the solver with
-    data_types = [torch.float32, torch.float64]
-    results = {}
-    num_steps = 2000  # Number of steps for the time discretization
-
-    # Loop over the defined data types (float32 and float64)
-    for dtype in data_types:
-        print(f"Running solver with dtype: {dtype}")
-
-        # Define the time points for the simulation
-        t = torch.linspace(0., 20., num_steps + 1, dtype=dtype)
-
-        # Real values for comparison using the Mittag-Leffler function
-        real_values = [mittag_leffler(-i.item() ** 0.6, 0.6) for i in t]
-
-        # Initial condition for the system (batch size of 1)
-        y0 = torch.tensor([1., 1.], dtype=dtype)
-
-        # Start the timer
-        start_time = time.time()
-
-        # Prepare the initial condition for batch processing
-        batch_size = 1
-        y0_batch = y0.repeat(batch_size, 1)
-
-        # Solve the fractional differential equation
-        solver_values = FDEint(
-            fractional_diff_eq,
-            t,
-            y0_batch,
-            torch.tensor([0.6], dtype=dtype).unsqueeze(0),
-            h=torch.tensor(20 / num_steps, dtype=dtype),
-            dtype=dtype,
-            DEBUG=False
-        )
-
-        # End the timer
-        end_time = time.time()
-
-        # Print the time taken for the solver to run
-        print(f'Time taken by solver: {end_time - start_time:.4f} seconds')
-
-        # Plot the solver's output and the real values for comparison
-        plt.plot(t.squeeze().detach().numpy(), solver_values[0, :, 0].detach().numpy(), label=f'Solver (dtype={dtype})')
-        plt.plot(t.detach().numpy(), real_values, label='Real values')
-        plt.legend()
-        plt.show()
-
-        # Compute the error between the solver's output and the real values
-        real_values_np = np.array(real_values)
-        solver_values_np = solver_values[0].detach().numpy()
-        error = real_values_np.flatten() - solver_values_np[:, 0].flatten()
-
-        # Print the total error and plot the error over time
-        print(f'Total error: {np.sum(np.abs(error)) / len(error):.6f}')
-        plt.plot(t.detach().numpy(), error, label=f'Error (dtype={dtype})')
-        plt.legend()
-        plt.show()
-
-        # Store the results in a dictionary for later comparison
-        results[dtype] = {
-            'time': end_time - start_time,
-            'total_error': np.sum(np.abs(error)) / len(error)
-        }
-
-    # Summarize the results for all data types
-    print("Results summary:")
-    for dtype, result in results.items():
-        print(f"dtype: {dtype}, time taken: {result['time']:.4f} seconds, total error: {result['total_error']:.6f}")

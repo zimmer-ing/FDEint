@@ -1,0 +1,9 @@
+
+/build
+/tests/__pycache__
+/FDEint/__pycache__
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
