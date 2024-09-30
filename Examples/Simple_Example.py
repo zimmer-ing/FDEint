@@ -1,4 +1,4 @@
-# test_installation.py
+# Simple example of solving a fractional differential equation using FDEint
 import torch
 from FDEint import FDEint
 
