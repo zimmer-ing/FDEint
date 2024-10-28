@@ -1,18 +1,21 @@
 # Copyright (C) 2024 Bernd Zimmering
-# This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY-4.0).
-# To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+# This work is licensed under a MIT License. Please see the LICENSE.txt file for details.
 #
 # If you find this solver useful in your research, please consider citing:
-# @InProceedings{zimmering24,
-#     title     = {Optimising Neural Fractional Differential Equations for Performance and Efficiency},
-#     author    = {Zimmering, Bernd and Coelho, Cec\'{\i}lia and Niggemann, Oliver},
-#     booktitle = {Proceedings of the 1st ECAI Workshop on “Machine Learning Meets Differential Equations: From Theory to Applications”},
-#     year      = {2024},
-#     pages     = {1-24},
-#     volume    = {255},
-#     series    = {Proceedings of Machine Learning Research},
-#     publisher = {PMLR},
-#     url       = {}
+# @InProceedings{pmlr-v255-zimmering24a,
+#   title = 	 {Optimising Neural Fractional Differential Equations for Performance and Efficiency},
+#   author =       {Zimmering, Bernd and Coelho, Cec\'{i}lia and Niggemann, Oliver},
+#   booktitle = 	 {Proceedings of the 1st ECAI Workshop on "Machine Learning Meets Differential Equations: From Theory to Applications"},
+#   pages = 	 {1--22},
+#   year = 	 {2024},
+#   editor = 	 {Coelho, Cecı́lia and Zimmering, Bernd and Costa, M. Fernanda P. and Ferrás, Luı́s L. and Niggemann, Oliver},
+#   volume = 	 {255},
+#   series = 	 {Proceedings of Machine Learning Research},
+#   month = 	 {20 Oct},
+#   publisher =    {PMLR},
+#   pdf = 	 {https://raw.githubusercontent.com/mlresearch/v255/main/assets/zimmering24a/zimmering24a.pdf},
+#   url = 	 {https://proceedings.mlr.press/v255/zimmering24a.html},
+#   abstract = 	 {Neural Ordinary Differential Equations (NODEs) are well-established architectures that fit an ODE, modelled by a neural network (NN), to data, effectively modelling complex dynamical systems. Recently, Neural Fractional Differential Equations (NFDEs) were proposed, inspired by NODEs, to incorporate non-integer order differential equations, capturing memory effects and long-range dependencies. In this work, we present an optimised implementation of the NFDE solver, achieving up to 570 times faster computations and up to 79 times higher accuracy. Additionally, the solver supports efficient multidimensional computations and batch processing. Furthermore, we enhance the experimental design to ensure a fair comparison of NODEs and NFDEs by implementing rigorous hyperparameter tuning and using consistent numerical methods. Our results demonstrate that for systems exhibiting fractional dynamics, NFDEs significantly outperform NODEs, particularly in extrapolation tasks on unseen time horizons. Although NODEs can learn fractional dynamics when time is included as a feature to the NN, they encounter difficulties in extrapolation due to reliance on explicit time dependence. The code is available at https://github.com/zimmer-ing/Neural-FDE}
 # }
 
 import torch
