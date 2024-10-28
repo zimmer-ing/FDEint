@@ -58,4 +58,4 @@ If you find FDEint useful for your research, please consider citing the followin
 ```
 
 ## License
-This project is licensed under the MIT License. Please see the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. Please see the [LICENSE](LICENSE.txt) file for more details.
