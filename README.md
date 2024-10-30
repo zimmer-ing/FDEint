@@ -1,7 +1,13 @@
 # FDEint
 
-FDEint is a Python package for solving fractional differential equations using a predictor-corrector method. This package is part of the work presented in the paper “Optimising Neural Fractional Differential Equations for Performance and Efficiency” by Bernd Zimmering, Cecília Coelho, and Oliver Niggemann, featured at the 1st ECAI Workshop on “Machine Learning Meets Differential Equations: From Theory to Applications”.
+[![PyPI version](https://badge.fury.io/py/FDEint.svg)](https://badge.fury.io/py/FDEint)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+**FDEint** is a Python package designed for solving fractional differential equations through a predictor-corrector method. This package was developed as part of the work presented in the following paper:
+
+> Zimmering, B., Coelho, C., & Niggemann, O. (2024). *Optimising Neural Fractional Differential Equations for Performance and Efficiency*. In *Proceedings of the 1st ECAI Workshop on Machine Learning Meets Differential Equations: From Theory to Applications*. [Available online](https://proceedings.mlr.press/v255/zimmering24a.html).
+
+For a deeper understanding of the mathematical foundations and optimization techniques used in **FDEint**, please refer to the paper linked above. The code linked to the paper is also is available on [GitHub](https://github.com/zimmer-ing/Neural-FDE).
 ## Installation
 
 You can install the package using python >=3.8 and pip:
