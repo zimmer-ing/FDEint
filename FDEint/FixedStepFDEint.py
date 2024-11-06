@@ -66,7 +66,7 @@ def FDEint(f, t, y0, alpha, h=None, dtype=torch.float32, DEBUG=False, return_int
     if len(y0.shape) == 1:
         y0 = y0.unsqueeze(0)
 
-    # Check if alpha is a parameter in autograd (for optimization purposes)
+    # Check if alpha is a parameter in autograd (if so, clone some tensors to autograd avoid errors)
     alpha_is_in_autograd = isinstance(alpha, nn.Parameter)
 
     # Convert all relevant tensors to the specified dtype
@@ -119,7 +119,7 @@ def FDEint(f, t, y0, alpha, h=None, dtype=torch.float32, DEBUG=False, return_int
         fk_mem[:, j, :] = fkj.clone() if alpha_is_in_autograd else fkj
 
         # Retrieve previously computed function values
-        fk = fk_mem[:, :j, :]
+        fk = fk_mem[:, :j, :].clone() if alpha_is_in_autograd else fk_mem[:, :j, :]
 
         # Predictor step: Estimate the next value using previous steps
         bjk = b[j - kn[:j]]

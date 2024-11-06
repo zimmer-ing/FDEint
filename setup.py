@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='FDEint',
-    version='0.1.0',
+    version='0.1.1',
     description='A PyTorch-based solver for Neural Fractional Differential Equations (NFDE) using a predictor-corrector method.',
     long_description="""
     **FDEint** is a specialized Python package for solving Neural Fractional Differential Equations (NFDEs) with high efficiency and accuracy, specifically designed for PyTorch models. The neural network provided to the solver must be a subclass of `torch.nn.Module`. This package enables NFDEs to capture memory effects and long-range dependencies effectively.
