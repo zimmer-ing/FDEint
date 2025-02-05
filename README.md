@@ -39,7 +39,7 @@ Please find the code for this example in the [examples](Examples) folder.
 
 The methodology and optimization strategies for the FDEint package are detailed in the paper *"Optimising Neural Fractional Differential Equations for Performance and Efficiency"*. You can access the paper in the following ways:
 
-View the [official PMLR publication](https://proceedings.mlr.press/v255/zimmering24.html) (once available) or the version from the github repo [here](https://github.com/zimmer-ing/Neural-FDE).
+View the [official PMLR publication](https://proceedings.mlr.press/v255/zimmering24a.html) or the version from our github repo [here](https://github.com/zimmer-ing/Neural-FDE).
 
 ## Citation
 
