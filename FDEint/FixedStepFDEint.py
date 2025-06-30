@@ -32,7 +32,7 @@ def torchgamma(x):
 
 
 # Main FDE solver function
-def FDEint(f, t, y0, alpha, h=None, dtype=torch.float32, DEBUG=False, return_internals=False):
+def FDEint(f:nn.Module, t:torch.tensor, y0:torch.tensor, alpha:torch.tensor or torch.nn.parameter, h=None, dtype=torch.float32, DEBUG=False, return_internals=False):
     """
     Solves a fractional differential equation (FDE) using a predictor-corrector method.
 
@@ -54,20 +54,28 @@ def FDEint(f, t, y0, alpha, h=None, dtype=torch.float32, DEBUG=False, return_int
     # Ensure alpha is in the correct range and h is positive
     assert 0 < alpha <= 1, "Alpha must be between 0 and 1"
     assert h is None or h > 0, "Step size must be greater than 0 if provided"
+    assert len(y0.shape) == 1 or len(y0.shape) == 2, "Initial condition y0 must have shape (dim_y,) or (batch_size, dim_y)"
+
 
     # Check if the time tensor t needs to be expanded to have a batch dimension
     device = y0.device
     if len(t.shape) == 1:
         t = t.unsqueeze(-1).unsqueeze(0).repeat(y0.shape[0], 1, 1)
     elif len(t.shape) == 2 and t.shape[-1] == 1:
-        t = t.unsqueeze(0)
+        if t.shape[-1] == 1:
+            t = t.unsqueeze(0)
+        else:
+            t = t.unsqueeze(-1)
 
     # Ensure y0 has the right shape for batch operations
     if len(y0.shape) == 1:
         y0 = y0.unsqueeze(0)
 
+    # check if batchsizes of y0 and t are the same
+    assert y0.shape[0] == t.shape[0], "Batch sizes of y0 and t must be the same"
+
     # Check if alpha is a parameter in autograd (if so, clone some tensors to autograd avoid errors)
-    alpha_is_in_autograd = isinstance(alpha, nn.Parameter)
+    alpha_is_in_autograd = alpha.requires_grad
 
     # Convert all relevant tensors to the specified dtype
     t, y0, alpha = t.to(dtype), y0.to(dtype), alpha.to(dtype)
