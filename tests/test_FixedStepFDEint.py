@@ -2,7 +2,6 @@ import torch
 import unittest
 import time
 import numpy as np
-import matplotlib.pyplot as plt
 from FDEint.FixedStepFDEint import FDEint
 from tests.mittag_leffler import ml as mittag_leffler
 
@@ -70,11 +69,6 @@ class TestFDEintSolver(unittest.TestCase):
                 # Set the acceptable error threshold (can be adjusted)
                 acceptable_error = 0.0009
                 self.assertLess(total_error, acceptable_error, f"Total error for dtype {dtype} exceeded acceptable limit.")
-
-                # Optional: display error plot
-                plt.plot(t.detach().numpy(), error, label=f'Error (dtype={dtype})')
-                plt.legend()
-                plt.show()
 
     def tearDown(self):
         # Summarize the results after all tests

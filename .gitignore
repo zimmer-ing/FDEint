@@ -9,3 +9,7 @@ __pycache__/
 *.pyc
 /.idea
 pypy_upload.sh
+.DS_Store
+venv/
+.venv/
+.pytest_cache/

@@ -1,0 +1,11 @@
+include README.md
+include LICENSE.txt
+include CHANGELOG.md
+include RELEASING.md
+include pyproject.toml
+recursive-include Examples *.py
+recursive-include tests *.py
+prune venv
+prune .venv
+prune build
+global-exclude __pycache__ *.py[cod] .DS_Store
