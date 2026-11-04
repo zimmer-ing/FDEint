@@ -55,7 +55,7 @@ jobs:
   test:
     name: Test Python ${{ matrix.python-version }}
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
       matrix:
@@ -63,6 +63,9 @@ jobs:
         include:
           - python-version: '3.8'
             torch-spec: 'torch==2.2.1'
+            runner: ubuntu-22.04
+          - python-version: '3.9'
+            runner: ubuntu-22.04
     steps:
       - uses: actions/checkout@v7
         with:

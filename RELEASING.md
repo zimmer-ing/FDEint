@@ -56,6 +56,8 @@ A published PyPI file cannot be replaced; corrections require a new version.
   environment, then check their descriptions and metadata with Twine.
 - Install the same built wheel on Python 3.8–3.15 and run the regression tests
   and external-input example outside the source checkout.
+- Run Python 3.8 and 3.9 on Ubuntu 22.04, where GitHub provides those
+  interpreters. Newer Python jobs use `ubuntu-latest`.
 - Test PyTorch 2.2.1 on Python 3.8, and compatible current PyTorch versions on
   the other Python versions. CPU-only PyTorch packages keep CI independent of
   GPU hardware. CUDA verification still requires a compatible GPU.
