@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='fdeint',
-    version='0.1.2',
+    version='0.1.3',
     description='A PyTorch-based solver for Neural Fractional Differential Equations (NFDE) using a predictor-corrector method.',
     long_description=Path(__file__).with_name('README.md').read_text(encoding='utf-8'),
     long_description_content_type='text/markdown',
@@ -27,10 +27,14 @@ setup(
     },
     classifiers=[
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
+        'Programming Language :: Python :: 3.15',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],

@@ -25,7 +25,7 @@ Python 3.8 or newer and PyTorch 2.2.1 or newer are required:
 pip install FDEint
 ```
 
-To use the source checkout or prepare the 0.1.2 release:
+To use the source checkout:
 
 ```bash
 python -m pip install -e .
@@ -216,9 +216,9 @@ double precision alone does not guarantee a desired error tolerance.
 ## Development and release
 
 Install test dependencies with `python -m pip install -e '.[test]'`.
-See [CHANGELOG.md](https://github.com/zimmer-ing/FDEint/blob/main/CHANGELOG.md) for the 0.1.2 changes and
-[RELEASING.md](https://github.com/zimmer-ing/FDEint/blob/main/RELEASING.md) for testing, building, inspecting, and publishing
-the distribution.
+See [CHANGELOG.md](https://github.com/zimmer-ing/FDEint/blob/main/CHANGELOG.md) for release changes and
+[RELEASING.md](https://github.com/zimmer-ing/FDEint/blob/main/RELEASING.md) for local checks and automatic publishing
+through GitHub releases. The release workflow tests the installed wheel on Python 3.8–3.15 before uploading it to PyPI.
 
 ## Paper
 

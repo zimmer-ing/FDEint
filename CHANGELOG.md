@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3
+
+- Declare Python 3.8–3.15 compatibility in package metadata.
+- Add automatic wheel and source builds, package checks, and installed-wheel
+  tests on Python 3.8–3.15. The oldest Python job also tests the minimum
+  supported PyTorch version, 2.2.1; newer jobs use compatible current versions.
+- Publish tested distributions to PyPI through Trusted Publishing when a
+  GitHub release is published and its tag matches the package version.
+
 ## 0.1.2
 
 - Add external inputs through sampled tensors (`u`) or a callback (`u_fn`), with
